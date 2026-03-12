@@ -34,7 +34,7 @@ wheels/
 Thumbs.db
 
 # Large data and model files
-data/
+data/**/.git/
 models/*.pth
 *.pth
 
