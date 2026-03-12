@@ -1,0 +1,9 @@
+Treatment Support Table (AI-assisted)
+-----------------------------------
+HeadCT: P=0.94, R=0.94, F1=0.94, Risk=Low | Use as supportive evidence; correlate with history, labs, and imaging findings.
+ChestCT: P=0.95, R=1.00, F1=0.97, Risk=Low | Use as supportive evidence; correlate with history, labs, and imaging findings.
+AbdomenCT: P=0.93, R=1.00, F1=0.96, Risk=Low | Use as supportive evidence; correlate with history, labs, and imaging findings.
+BreastMRI: P=0.94, R=1.00, F1=0.97, Risk=Low | Use as supportive evidence; correlate with history, labs, and imaging findings.
+Hand: P=0.97, R=0.95, F1=0.96, Risk=Low | Use as supportive evidence; correlate with history, labs, and imaging findings.
+CIFAR10: P=0.50, R=0.69, F1=0.58, Risk=High | Non-clinical label group; do not use for treatment decisions.
+CIFAR100: P=0.60, R=0.16, F1=0.25, Risk=High | Non-clinical label group; do not use for treatment decisions.

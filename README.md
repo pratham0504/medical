@@ -72,6 +72,15 @@ Available options for `--algo`:
 - `fedprox`
 - `fedsgd`
 
+### Dataset Loading Behavior
+
+Training automatically combines all supported datasets detected under `data/MNIST/raw`:
+- Medical datasets (HeadCT, ChestCT, AbdomenCT, BreastMRI, Hand)
+- CIFAR-10 (`cifar-10-batches-py`)
+- CIFAR-100 (`cifar-100-python`)
+
+If CIFAR folders are present, they are included automatically in training and class mapping.
+
 ## Algorithms
 
 - **FedAvg:** Clients perform multiple local SGD epochs and the server averages model parameters.  

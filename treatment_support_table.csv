@@ -1,0 +1,8 @@
+class,precision,recall,f1_score,support,risk_tier,suggested_action
+HeadCT,0.9405,0.9449,0.9427,2107,Low,Use as supportive evidence; correlate with history; labs; and imaging findings.
+ChestCT,0.9480,1.0000,0.9733,2040,Low,Use as supportive evidence; correlate with history; labs; and imaging findings.
+AbdomenCT,0.9323,1.0000,0.9650,2079,Low,Use as supportive evidence; correlate with history; labs; and imaging findings.
+BreastMRI,0.9353,1.0000,0.9666,1794,Low,Use as supportive evidence; correlate with history; labs; and imaging findings.
+Hand,0.9650,0.9524,0.9587,2058,Low,Use as supportive evidence; correlate with history; labs; and imaging findings.
+CIFAR10,0.4984,0.6862,0.5775,937,High,Non-clinical label group; do not use for treatment decisions.
+CIFAR100,0.6031,0.1604,0.2534,985,High,Non-clinical label group; do not use for treatment decisions.

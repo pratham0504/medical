@@ -56,7 +56,7 @@ class Client:
                 data, target = data.to(self.device), target.to(self.device)
                 self.optimizer.zero_grad()
                 output = self.model(data)
-                loss = F.nll_loss(output, target)
+                loss = F.cross_entropy(output, target)  # raw logits -> cross_entropy
                 loss.backward()
 
                 # call step with correct signature

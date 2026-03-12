@@ -2,36 +2,28 @@ import os
 import argparse
 import torch
 from config import FLConfig
-from data_loader import load_mnist_partitions
+from data_loader import load_medical_partitions
 from server import Server
 
-def parse_args():
-    p = argparse.ArgumentParser(description="Federated Learning CLI")
-    p.add_argument("--algo", type=str, default="fedavg",
-                   choices=["fedavg", "feddane", "fedprox", "fedsgd"]);
-    return p.parse_args()
-
-
 def main():
-    cli = parse_args()
-    config = FLConfig(algorithm=cli.algo)
-    device = torch.device("cuda" if (config.use_cuda and torch.cuda.is_available()) else "cpu")
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--algo", type=str, default="fedavg")
+    args = parser.parse_args()
 
-    # Load per-client train loaders and a central test loader
-    train_loaders, test_loader = load_mnist_partitions(config)
+    config = FLConfig(algorithm=args.algo)
+    # Detect GPU on Windows/Linux or use CPU on Mac
+    device = torch.device("cuda" if (torch.cuda.is_available() and config.use_cuda) else "cpu")
+    print(f"Running on: {device}")
 
-    # Initialize and run federated server
-    server = Server(config, train_loaders, test_loader, device)
+    train_loaders, test_loader, names = load_medical_partitions(config)
+    server = Server(config, train_loaders, test_loader, device, names)
     server.run()
 
-    # Ensure save directory exists
-    save_path = config.save_path.format(algorithm=cli.algo)
+    # Save the model
+    save_path = config.save_path.format(algorithm=args.algo)
     os.makedirs(os.path.dirname(save_path), exist_ok=True)
-
-    # Save global model
     torch.save(server.global_model.state_dict(), save_path)
-    print(f"Saved global model to {save_path}")
-
+    print(f"Model saved: {save_path}")
 
 if __name__ == "__main__":
     main()
